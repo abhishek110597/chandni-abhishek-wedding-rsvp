@@ -40,16 +40,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (guestCountSelect.value === 'Custom') {
                     customGuestGroup.classList.remove('hidden');
                     customGuestGroup.classList.add('active');
+                    document.getElementById('customGuestCount').disabled = false;
+                    document.getElementById('customGuestCount').required = true;
                 }
             } else {
                 guestGroup.classList.remove('active');
                 dietaryGroup.classList.remove('active');
                 customGuestGroup.classList.add('hidden');
                 customGuestGroup.classList.remove('active');
+                document.getElementById('customGuestCount').disabled = true;
+                document.getElementById('customGuestCount').required = false;
                 // Optional: clear values if they select No
                 document.getElementById('dietaryRestrictions').value = '';
                 guestCountSelect.value = '1';
-                document.getElementById('customGuestCount').value = 0;
+                document.getElementById('customGuestCount').value = '';
             }
         });
     });
@@ -59,10 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target.value === 'Custom') {
             customGuestGroup.classList.remove('hidden');
             customGuestGroup.classList.add('active');
+            document.getElementById('customGuestCount').disabled = false;
             document.getElementById('customGuestCount').required = true;
         } else {
             customGuestGroup.classList.add('hidden');
             customGuestGroup.classList.remove('active');
+            document.getElementById('customGuestCount').disabled = true;
             document.getElementById('customGuestCount').required = false;
         }
     });
@@ -132,6 +138,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 dietaryGroup.classList.remove('active');
                 customGuestGroup.classList.add('hidden');
                 customGuestGroup.classList.remove('active');
+                document.getElementById('customGuestCount').disabled = true;
+                document.getElementById('customGuestCount').required = false;
+                document.getElementById('customGuestCount').value = '';
             })
             .catch(error => {
                 console.error('Error!', error.message);
