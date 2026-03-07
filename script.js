@@ -24,6 +24,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const form = document.getElementById('rsvpForm');
     const radioAttending = document.querySelectorAll('input[name="attending"]');
     const guestGroup = document.getElementById('guestCountGroup');
+    const guestCountSelect = document.getElementById('guestCount');
+    const customGuestGroup = document.getElementById('customGuestCountGroup');
     const dietaryGroup = document.getElementById('dietaryGroup');
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('formMessage');
@@ -34,14 +36,35 @@ document.addEventListener('DOMContentLoaded', () => {
             if (e.target.value === 'Yes') {
                 guestGroup.classList.add('active');
                 dietaryGroup.classList.add('active');
+                // Check if 'Custom' is selected, if so make it active
+                if (guestCountSelect.value === 'Custom') {
+                    customGuestGroup.classList.remove('hidden');
+                    customGuestGroup.classList.add('active');
+                }
             } else {
                 guestGroup.classList.remove('active');
                 dietaryGroup.classList.remove('active');
+                customGuestGroup.classList.add('hidden');
+                customGuestGroup.classList.remove('active');
                 // Optional: clear values if they select No
                 document.getElementById('dietaryRestrictions').value = '';
-                document.getElementById('guestCount').value = '1';
+                guestCountSelect.value = '1';
+                document.getElementById('customGuestCount').value = 0;
             }
         });
+    });
+
+    // Toggle custom guest count input
+    guestCountSelect.addEventListener('change', (e) => {
+        if (e.target.value === 'Custom') {
+            customGuestGroup.classList.remove('hidden');
+            customGuestGroup.classList.add('active');
+            document.getElementById('customGuestCount').required = true;
+        } else {
+            customGuestGroup.classList.add('hidden');
+            customGuestGroup.classList.remove('active');
+            document.getElementById('customGuestCount').required = false;
+        }
     });
 
     // Form Submission
@@ -57,6 +80,11 @@ document.addEventListener('DOMContentLoaded', () => {
         // Grab values
         const formData = new FormData(form);
         const data = Object.fromEntries(formData.entries());
+
+        // If 'Custom' is selected, overwrite the 'guestCount' parameter in formData before sending
+        if (data.guestCount === 'Custom') {
+            formData.set('guestCount', data.customGuestCount);
+        }
 
         // We will insert the Google Apps Script URL here later
         const googleScriptURL = 'https://script.google.com/macros/s/AKfycbydxbs50luidCqsUSjyYTIxdcwS8JqcjuLlbgRgAvNtbrS1BvyHknjql1SbktUnRO2E/exec';
@@ -102,6 +130,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 form.reset();
                 guestGroup.classList.remove('active');
                 dietaryGroup.classList.remove('active');
+                customGuestGroup.classList.add('hidden');
+                customGuestGroup.classList.remove('active');
             })
             .catch(error => {
                 console.error('Error!', error.message);

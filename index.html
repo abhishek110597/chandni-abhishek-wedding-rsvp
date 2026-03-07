@@ -67,7 +67,7 @@
             <div class="rsvp-header">
                 <h2>RSVP</h2>
                 <div class="divider center"></div>
-                <p>Please let us know if you can make it by August 1st, 2026 so we can do the best to accomodate all
+                <p>Please let us know if you can make it by August 1st, 2026 so we can do our best to accomodate all
                     requests.</p>
             </div>
 
@@ -101,8 +101,14 @@
                             <option value="3">3</option>
                             <option value="4">4</option>
                             <option value="5">5</option>
-                            <option value="6">6</option>
+                            <option value="Custom">Custom</option>
                         </select>
+                    </div>
+
+                    <div class="form-group attending-details hidden" id="customGuestCountGroup">
+                        <label for="customGuestCount">Please specify total number of guests:</label>
+                        <input type="number" id="customGuestCount" name="customGuestCount" min="6"
+                            placeholder="Enter number of guests">
                     </div>
 
                     <div class="form-group attending-details" id="dietaryGroup">
