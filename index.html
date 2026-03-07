@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C & A | Wedding RSVP</title>
+    <!-- Preconnect to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Modern Elegant Fonts: Playfair Display for headings, Inter for body -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-background" style="background-image: url('./pictures/engagement.jpg');"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <p class="subtitle fade-up">Please join us to celebrate</p>
+            <h1 class="title fade-up delay-1">The Wedding Of</h1>
+            <p class="names fade-up delay-2">Chandni & Abhishek</p>
+            <a href="#rsvp" class="cta-button fade-up delay-3">RSVP Now</a>
+        </div>
+    </header>
+
+    <!-- Thoughtful Message / Our Story Section -->
+    <section class="story-section" id="our-story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image-wrapper reveal-left">
+                    <img src="./pictures/couple_photo_cafe.jpg" alt="Couple laughing in cafe" class="story-image">
+                </div>
+                <div class="story-content reveal-right">
+                    <h2>We can't wait to celebrate</h2>
+                    <div class="divider"></div>
+                    <p class="quote">"Our story wouldn't be complete without you there to celebrate our next chapter.
+                        Together with our families, we invite you to share the joy of our wedding day."</p>
+                    <p class="details">
+                        <strong>Date:</strong> August 30th, 2026<br>
+                        <strong>Time:</strong> 11:30 AM in the morning<br>
+                        <strong>Venue:</strong> <a href="https://maps.app.goo.gl/1YYtFKPkW8aYoE5L8" target="_blank"
+                            style="color: var(--color-primary); text-decoration: underline;">Azeezia Convention Centre,
+                            Kochi, Keralam</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Photo Section / Gallery Breaker -->
+    <section class="photo-break" style="background-image: url('./pictures/couple_photo_outdoors.jpg');">
+        <div class="overlay-light"></div>
+        <div class="container">
+            <h3 class="elegant-script">A lifetime of love begins here...</h3>
+        </div>
+    </section>
+
+    <!-- RSVP Form Section -->
+    <section class="rsvp-section" id="rsvp">
+        <div class="container rsvp-container">
+            <div class="rsvp-header">
+                <h2>RSVP</h2>
+                <div class="divider center"></div>
+                <p>Please let us know if you can make it by August 1st, 2026.</p>
+            </div>
+
+            <div class="form-wrapper">
+                <form id="rsvpForm" class="rsvp-form">
+
+                    <div class="form-group">
+                        <label for="fullName">Name(s)</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="E.g., John & Jane Doe" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Will you be attending?</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="attending" value="Yes" required>
+                                <span class="radio-custom"></span> Joyfully Accepts
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="attending" value="No">
+                                <span class="radio-custom"></span> Regretfully Declines
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group attending-details" id="guestCountGroup">
+                        <label for="guestCount">Total Number of Guests</label>
+                        <select id="guestCount" name="guestCount">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group attending-details" id="dietaryGroup">
+                        <label for="dietaryRestrictions">Dietary Restrictions or Notes</label>
+                        <textarea id="dietaryRestrictions" name="dietaryRestrictions" rows="3"
+                            placeholder="Please list any allergies or dietary needs here..."></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button" id="submitBtn">
+                        <span class="btn-text">Submit RSVP</span>
+                        <div class="spinner"></div>
+                    </button>
+
+                    <div id="formMessage" class="form-message hidden">
+                        <!-- Success or error message will appear here -->
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container text-center">
+            <p>Made with love. We can't wait to see you!</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
