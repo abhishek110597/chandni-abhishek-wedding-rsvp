@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const guestGroup = document.getElementById('guestCountGroup');
     const guestCountSelect = document.getElementById('guestCount');
     const customGuestGroup = document.getElementById('customGuestCountGroup');
-    const dietaryGroup = document.getElementById('dietaryGroup');
+    //const dietaryGroup = document.getElementById('dietaryGroup');
     const submitBtn = document.getElementById('submitBtn');
     const formMessage = document.getElementById('formMessage');
 
@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
         radio.addEventListener('change', (e) => {
             if (e.target.value === 'Yes') {
                 guestGroup.classList.add('active');
-                dietaryGroup.classList.add('active');
+               // dietaryGroup.classList.add('active');
                 // Check if 'Custom' is selected, if so make it active
                 if (guestCountSelect.value === 'Custom') {
                     customGuestGroup.classList.remove('hidden');
@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } else {
                 guestGroup.classList.remove('active');
-                dietaryGroup.classList.remove('active');
+                //dietaryGroup.classList.remove('active');
                 customGuestGroup.classList.add('hidden');
                 customGuestGroup.classList.remove('active');
                 document.getElementById('customGuestCount').disabled = true;
@@ -135,7 +135,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 form.reset();
                 guestGroup.classList.remove('active');
-                dietaryGroup.classList.remove('active');
+                //dietaryGroup.classList.remove('active');
                 customGuestGroup.classList.add('hidden');
                 customGuestGroup.classList.remove('active');
                 document.getElementById('customGuestCount').disabled = true;
